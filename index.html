@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WD Games - Estilo Friv</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #000;
+      color: white;
+    }
+    header {
+      background-color: #0033cc;
+      text-align: center;
+      padding: 20px;
+      font-size: 2em;
+      font-weight: bold;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 15px;
+      padding: 20px;
+    }
+    .game-thumb {
+      background-color: #111;
+      border: 2px solid #00aaff;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .game-thumb:hover {
+      transform: scale(1.05);
+    }
+    .game-thumb img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+    }
+    .game-thumb p {
+      text-align: center;
+      margin: 5px 0;
+      color: white;
+    }
+    #game-screen {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #000;
+      z-index: 1000;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    #game-screen iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    #close-btn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      background: red;
+      color: white;
+      border: none;
+      font-size: 1.5em;
+      padding: 5px 15px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+  </style>
+</head>
+<body>
+  <header>WD Games</header>
+  <div class="grid">
+    <div class="game-thumb" onclick="openGame('dino.html')">
+      <img src="https://i.imgur.com/naRnI2H.png" alt="Dino Run">
+      <p>Dino Run</p>
+    </div>
+    <div class="game-thumb" onclick="openGame('tetris.html')">
+      <img src="https://i.imgur.com/2cK3T9d.png" alt="Tetris">
+      <p>Tetris</p>
+    </div>
+    <div class="game-thumb" onclick="openGame('2048.html')">
+      <img src="https://i.imgur.com/keZVFlL.png" alt="2048">
+      <p>2048</p>
+    </div>
+  </div>  <div id="game-screen">
+    <button id="close-btn" onclick="closeGame()">X</button>
+    <iframe id="game-frame" src=""></iframe>
+  </div>  <script>
+    function openGame(src) {
+      document.getElementById('game-frame').src = src;
+      document.getElementById('game-screen').style.display = 'flex';
+    }
+
+    function closeGame() {
+      document.getElementById('game-frame').src = '';
+      document.getElementById('game-screen').style.display = 'none';
+    }
+  </script></body>
+  </html>
